@@ -10,7 +10,7 @@ public class Rating {
 	
 	private int rating;
 	
-	private String remark;
+	private String feedback;
 
 	public String getRatingId() {
 		return ratingId;
@@ -44,13 +44,14 @@ public class Rating {
 		this.rating = rating;
 	}
 
-	public String getRemark() {
-		return remark;
+	public String getFeedback() {
+		return feedback;
 	}
 
-	public void setRemark(String remark) {
-		this.remark = remark;
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
+
 	
 	
 }

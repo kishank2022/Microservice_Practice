@@ -13,7 +13,6 @@ public interface RatingRepository extends JpaRepository<Rating, String> {
 
 	public List<Rating> findByUserId(String userId);
 	public List<Rating> findByHotelId(String hotelId);
-	public List<Rating> findByRatingId(String ratingId);
 	public List<Rating> findByRating(int rating);
 	
 }

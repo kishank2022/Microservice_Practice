@@ -1,0 +1,9 @@
+eureka:
+  instance:
+    hostname: localhost #yha ham host server ka ip likhege 
+  client:
+    register-with-eureka: false  # isko false karna important hai, nhi tho eureka server apne aap ko hi registe kardega 
+    fetch-registry: false # eureka server apne aap ko register na karde isliye ham isko bhi false karege 
+
+server:
+  port: 8761

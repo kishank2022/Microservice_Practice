@@ -1,10 +1,11 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/hotelmicroservice?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ratingmicroservice?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+  application:
+    name: Rating
   jpa:
     hibernate:
       ddl-auto: update
@@ -12,6 +13,15 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-
+ 
 server:
-  port: 8083
+  port: 8087
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true # isko true karege and bolege ki is service ko serviceRegistry se register karo
+    register-with-eureka: true # this is used to register this service with serviceRegistry
+    service-url:
+      defaultZone: http://localhost:8761/eureka # jis service pe register hona hai uska url provide karge yha ham

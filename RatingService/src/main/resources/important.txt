@@ -1,0 +1,34 @@
+-- 
+To make any service as eureka client 
+
+Step 1 - pom.xml me 
+1. properties tag me yh likho <spring-cloud.version>2025.0.0</spring-cloud.version>
+2. dependency me yh likho 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+3. dependencyManagement me yh liho 
+		<dependencyManagement>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-dependencies</artifactId>
+					<version>${spring-cloud.version}</version>
+					<type>pom</type>
+					<scope>import</scope>
+				</dependency>
+			</dependencies>
+		</dependencyManagement>
+		
+Step 2- application.yml file me 
+1. yh likho 
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+		

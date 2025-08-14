@@ -37,7 +37,7 @@ public class UserController {
 	
 	@GetMapping("/get/{userId}")
 	public ResponseEntity<User> getSingleUser(@PathVariable("userId") String userId){
-		User user = this.userService.getUser(userId);
+		User user = this.userService.getUser(userId); // here we will get the information of single user 
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 }
