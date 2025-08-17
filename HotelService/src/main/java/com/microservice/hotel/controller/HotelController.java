@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.microservice.hotel.entity.Hotel;
 import com.microservice.hotel.service.HotelService;
 
-@RestControllerAdvice
+@RestController
 @RequestMapping("/hotel/api")
 public class HotelController {
 
@@ -37,6 +38,7 @@ public class HotelController {
 	
 	@GetMapping("/getHotel/{hotelId}")
 	public ResponseEntity<Hotel> getHotelById(@PathVariable("hotelId") String hotelId){
+		System.out.println("get hotel by id is called !!!");
 		Hotel hotel = this.hotelService.getHotel(hotelId);
 		return ResponseEntity.status(HttpStatus.OK).body(hotel);
 	}

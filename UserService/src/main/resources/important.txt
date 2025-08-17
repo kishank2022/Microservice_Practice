@@ -1,0 +1,26 @@
+String url1 = "http://localhost:8087/api/rating/user/"+userId;
+String url1 = "http://RATINGSERVICE/api/rating/user/"+userId;
+ Ip and port ka dependency hatne ke liye ham directly Service ka name bhi use karsakte hai 
+ isko use karne ke liya jha hamne restTemplate ka bean banaaya hai vha us bean ke sath @LoadBalanced bhi use karo 
+ // cretaing rest template bean 
+	@Bean
+	@LoadBalanced
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+	
+	
+
+Feign Client - Feign Client is a declarative HTTP client in Spring Cloud.
+main method vali class ko @EnableFeignClients annonate karo
+pom.xml - 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+ek interface banao HotelService ke name se usko annonate karo @FeignClient(name = "HOTELSERVICE"), inside jis service ko use karna hai uska name likho
+	@Bean
+	@GetMapping("/hotel/api/getHotel/{hotelId}")
+	Hotel getHotel(@PathVariable("hotelId") String hotelId);
+@Getmapping me url same likho jesa us service ke controller me hai. and @Bean annonate karo,
+and use karo is interface ko in our userService with help of Autowired annonation. 

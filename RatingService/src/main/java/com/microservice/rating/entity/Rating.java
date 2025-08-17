@@ -1,9 +1,12 @@
 package com.microservice.rating.entity;
 
+import com.microservice.rating.dto.Hotel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "micro_rating")
@@ -20,6 +23,19 @@ public class Rating {
 	private String userId;
 	
 	private String feedback;
+	
+	@Transient
+	private Hotel hotel;
+	
+	
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
 
 	public Rating(String ratingId, int rating, String hotelId, String userId, String feedback) {
 		super();

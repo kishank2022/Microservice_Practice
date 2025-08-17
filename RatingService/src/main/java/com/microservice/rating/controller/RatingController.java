@@ -24,6 +24,7 @@ public class RatingController {
 	
 	@PostMapping("/createRating")
 	public ResponseEntity<Rating> createRating(@RequestBody Rating rating){
+		System.out.println("rating>>"+rating.toString());
 		Rating savedRating = this.ratingService.saveRating(rating);
 		return new ResponseEntity<Rating>(savedRating, HttpStatus.CREATED);
 	}

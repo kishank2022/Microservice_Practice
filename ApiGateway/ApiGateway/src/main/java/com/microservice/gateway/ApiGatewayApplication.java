@@ -1,14 +1,14 @@
-package com.microservice.user;
+package com.microservice.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UserServiceApplication {
+@EnableEu
+public class ApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserServiceApplication.class, args);
-		System.out.println("Fire mode on ");
+		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
 
 }
