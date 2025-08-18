@@ -12,7 +12,7 @@ import com.microservice.user.dto.Hotel;
 public interface HotelService {
 
 	// String url2 = "http://HOTELSERVICE/hotel/api/getHotel/"+hotelId;
-	@Bean
+	
 	@GetMapping("/hotel/api/getHotel/{hotelId}")
 	ResponseEntity<Hotel> getHotel(@PathVariable("hotelId") String hotelId);
 }
