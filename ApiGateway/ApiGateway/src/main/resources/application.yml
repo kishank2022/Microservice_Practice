@@ -12,11 +12,11 @@ spring:
         - id: HOTELSERVICE
           uri: lb://HOTELSERVICE
           predicates:
-            - Path=/hotel/api/**
+            - Path=/hotel/api/**,/hotel/staff/** # if hmako ek se jada url ko acces karna hai to ese use karo 
         - id: RATINGSERVICE
           uri: lb://RATINGSERVICE
           predicates:
-            - Path=/api/rating/**
+            - Path=/** # sab ke sab url ko access karna hai tho directly /** likh do  
   main:
     web-application-type: reactive
 eureka:

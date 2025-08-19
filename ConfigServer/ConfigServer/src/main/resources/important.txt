@@ -1,0 +1,6 @@
+	<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-server</artifactId>
+		</dependency>
+	Add this dependency when we want to externalize the configuration
+		

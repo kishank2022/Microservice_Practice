@@ -1,5 +1,6 @@
 package com.microservice.user.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.microservice.user.entity.User;
 import com.microservice.user.userService.UserService;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @RestController
 @RequestMapping("/api/user/")
@@ -36,8 +39,20 @@ public class UserController {
 	}
 	
 	@GetMapping("/get/{userId}")
+	@CircuitBreaker(name = "ratingHotelBreakerCircuitBreakerName", fallbackMethod = "ratingHotelFallbackMethodName")
 	public ResponseEntity<User> getSingleUser(@PathVariable("userId") String userId){
 		User user = this.userService.getUser(userId); // here we will get the information of single user 
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+	// fallback method ka name, vhi hona chahiye jo hamne CB ke yha likha hai 
+	// normal method and fallback method dono ka name same hona mangta 
+	public ResponseEntity<User> ratingHotelFallbackMethodName(String userId){
+		User user = new User();
+		user.setUserId("123456");
+		user.setUserName("dummy");
+		user.setUserEmail("dummy@gmail.com");
+		user.setRatings(new ArrayList<>());
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 }
