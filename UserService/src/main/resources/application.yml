@@ -5,7 +5,7 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
-    name: user-service
+    name: USERSERVICE
 
   jpa:
     hibernate:
@@ -52,3 +52,16 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowSize: 10
         slidingWindowType: COUNT_BASED
+
+  retry:
+    instances:
+      ratingHotelRetryName:
+        max-attempts: 3
+        wait-duration: 5s
+
+  ratelimiter:
+    instances:
+      userRateLimiter:
+        limit-refresh-period: 4s
+        limit-for-period: 2
+        timeout-duration: 0s

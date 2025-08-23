@@ -5,7 +5,7 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
-    name: Rating
+    name: RATINGSERVICE
   jpa:
     hibernate:
       ddl-auto: update

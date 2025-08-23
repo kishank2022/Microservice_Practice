@@ -48,3 +48,32 @@ and use karo is interface ko in our userService with help of Autowired annonatio
 			<artifactId>resilience4j-spring-boot2</artifactId>
 			<version>2.0.2</version> 
 		</dependency>
+		
+		
+		
+		
+		
+		
+If aap Circuit breaker implement kar rahe ho and, aapka CB call nhi ho ra hai tho, dekho ki 
+jo service band hai vha exception aaega unable to connect the servic vala us exception ke catch block me,
+exception handle karne ke baad aap vapasus exception ko trhow kar rahe ho 
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+			throw e;
+nhi tho yha pe hi exception handle hoga and hamara CB fallback method call hi nhi hoga 
+
+
+
+
+Retry implementation - 
+@Retry(name = "ratingHotelRetryName", fallbackMethod = "ratingHotelRetryMethodName")
+isko method ke upaar likhna hai
+
+application.properties me -> 
+resilience4j:
+	  retry:
+	    instances:
+	      ratingHotelRetryName:
+	        max-attempts: 3
+	        wait-duration: 5s
+		

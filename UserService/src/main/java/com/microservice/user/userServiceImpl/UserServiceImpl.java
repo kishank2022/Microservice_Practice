@@ -84,8 +84,8 @@ public class UserServiceImpl implements UserService {
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
+			throw e;
 		}
-		return ratings;
 	}
 
 	public Hotel getHotelById(String hotelId) {
