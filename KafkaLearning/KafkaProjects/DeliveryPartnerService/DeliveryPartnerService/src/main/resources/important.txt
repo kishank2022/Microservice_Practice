@@ -34,7 +34,7 @@ Basic Kafka Operations-
 	
 Use Kafka in java Spring boot project
  
-Step 1. add dependency in pom.xml file 
+Step 1. add dependency in pom.xml file ( kafka dependency and spring Web dependency ) add karo 
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
