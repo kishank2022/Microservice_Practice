@@ -1,0 +1,47 @@
+Apache Kafka- is a distributed streaming platform used for building real-time data pipelines and streaming applications.
+
+Core Concepts:
+	Topics: Categories or feed names to which records are published.
+	Partitions: Topics are split into partitions for scalability and parallelism.
+	Brokers: Servers that make up the Kafka cluster.
+	Producers: Clients that publish data to topics.
+	Consumers: Clients that subscribe to topics and process the feed of published messages.
+	Clusters: Kafka runs as a cluster on one or more servers.
+	
+Use Cases:
+	Real-time data pipelines
+	Stream processing
+	Messaging system replacement
+	
+	
+	
+Basic Kafka Operations-
+	Command-Line Tools
+	1. Create a topic - 
+	.\bin\windows\kafka-topics.bat --create --topic kafkaTopicName --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+	2. list all the topics in kafka 
+	.\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+	3. To describe a topic in kafka 
+	.\bin\windows\kafka-topics.bat --describe --topic kafkaTopicName --bootstrap-server localhost:9092
+	4. Our kafka server is running and we want to send some nmessage to the server 
+	.\bin\windows\kafka-console-producer.bat --topic kafkaTopicName --bootstrap-server localhost:9092
+	5. To reaqd the logs that is hitting our kafka server
+	.\bin\windows\kafka-console-consumer.bat --topic kafkaTopicName --from-beginning --bootstrap-server localhost:9092
+	
+
+
+
+	
+Use Kafka in java Spring boot project
+ 
+Step 1. add dependency in pom.xml file 
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+Step 2. producer ke properties file me yh likho 
+		spring.kafka.producer.bootstrap-servers=localhost:9092
+		spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+		spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+
+	
