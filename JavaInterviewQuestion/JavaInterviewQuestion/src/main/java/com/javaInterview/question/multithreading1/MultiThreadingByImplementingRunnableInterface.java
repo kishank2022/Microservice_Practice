@@ -9,10 +9,8 @@ public class MultiThreadingByImplementingRunnableInterface {
 		Thread thread1 = new Thread(runnable1, "Rubbavle-1-kishan");
 		Thread thread2 = new Thread(runnable1, "Rubbavle-2-kishan");
 		thread1.start();
-		thread2.start();
-		
-	}
-	
+		thread2.start();		
+	}	
 }
 
 
