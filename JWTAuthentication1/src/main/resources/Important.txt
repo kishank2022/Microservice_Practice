@@ -1,0 +1,6 @@
+http://localhost:8080/api/v1/auth/signin
+{
+    "userName":"alok2",
+    "password":"alok2"
+}
+{"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG9rMiIsImlhdCI6MTc1NzA3MzkxNCwiZXhwIjoxNzU3MDc1MzU0fQ.DKexSg56mtrRjPmG7XLm3vWaPQ3pVq_QUj8Vr6Lt3AQ","refreshToken":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG9rMiIsImlhdCI6MTc1NzA3MzkxNCwiZXhwIjoxNzU3Njc4NzE0fQ._SSfemZhTr0_AHYeS3sWt3cq9Kbg01cQ1yA8sF1FuQk"}
