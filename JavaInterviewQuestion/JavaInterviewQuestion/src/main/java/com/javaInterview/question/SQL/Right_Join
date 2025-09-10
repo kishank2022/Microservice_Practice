@@ -1,0 +1,14 @@
+Right Join - 
+	 A RIGHT JOIN (or RIGHT OUTER JOIN) in SQL is used to combine rows from two tables-
+	 Returns all rows from the right table, and Matching rows from the left table.
+	 If there is no match in the left table, it returns NULL for left table columns.
+	 Right table = the table written after RIGHT JOIN.
+	 
+	Employee - emp_id, emp_name, dept_id
+	Department - dept_id, dept_name
+	
+	SELECT e.emp_id, e.emp_name, d.dept_name
+	FROM employee e
+	RIGHT JOIN department d
+	ON e.dept_id = d.dept_id;
+	 

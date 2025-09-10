@@ -1,0 +1,43 @@
+Question - What is Maven?
+Answer - 
+	Apache Maven is a build automation tool used mainly for Java projects. It manages project dependencies automatically, compiles code,
+	runs tests, packages applications as JAR/WAR, and installs the artifacts into the local repository. We define configurations 
+	in the pom.xml file. By running mvn clean install, Maven will clean previous builds, compile the code, run tests, build the package,
+	and place the artifact in the local repo. It helps us avoid manually managing libraries and simplifies the build process.
+
+	mvn clean = Removes target/ folder (previous build artifacts).
+	mvn compile = Compiles Java source files.
+	mvn test = Runs unit tests.
+	mvn package = Packages compiled code into a JAR/WAR.
+	mvn install = Installs JAR into local repo (~/.m2/repository). 
+	mvn clean install = Cleans + Builds + Installs in local repository.
+	
+
+
+
+
+
+Question - What is maven clean?
+Answer - 
+	Maven clean generally deletes all files generated during previous build, especially the target/ directory. 
+	Deletes the target/ folder in your project.
+	Removes compiled .class files, packaged .jar or .war, temporary files, etc.
+	Ensures that the next build starts fresh without leftovers from previous builds.
+	Good practice before a fresh mvn install or mvn package.
+	
+	
+	
+Question - What is Maven build?
+Answer - 
+	A Maven Build is the process of compiling source code, resolving dependencies, running tests, packaging the application, 
+	and generating artifacts (like a JAR or WAR) using Maven lifecycle phases.
+	Command = mvn clean install
+	Output = Builds target/*.jar, runs tests, and installs to local repo.
+	Use Case = Helps build a Spring Boot app easily with dependency management.
+	
+
+	
+Question - What is Maven install?
+Answer - 
+	mvn install is a Maven command that compiles the source code, runs tests, packages the code (into a JAR or WAR), 
+	and installs the resulting artifact into the local Maven repository (usually at ~/.m2/repository).

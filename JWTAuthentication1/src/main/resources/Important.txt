@@ -1,6 +1,14 @@
-http://localhost:8080/api/v1/auth/signin
+URL - http://localhost:8080/api/v1/auth/signin
+POST 
+Request - 
 {
-    "userName":"alok2",
-    "password":"alok2"
+    "userName":"alok1",
+    "password":"alok1"
 }
-{"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG9rMiIsImlhdCI6MTc1NzA3MzkxNCwiZXhwIjoxNzU3MDc1MzU0fQ.DKexSg56mtrRjPmG7XLm3vWaPQ3pVq_QUj8Vr6Lt3AQ","refreshToken":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG9rMiIsImlhdCI6MTc1NzA3MzkxNCwiZXhwIjoxNzU3Njc4NzE0fQ._SSfemZhTr0_AHYeS3sWt3cq9Kbg01cQ1yA8sF1FuQk"}
+Response - 
+{
+"token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG9rMSIsImlhdCI6MTc1NzEzNzE5NSwiZXhwIjoxNzU3MTM4NjM1fQ.82uvXmxcYG6-zziQX9tjkXSRM3G-jqVgcuOkLCo6Teg",
+"refreshToken":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbG9rMSIsImlhdCI6MTc1NzEzNzE5NSwiZXhwIjoxNzU3NzQxOTk1fQ.4nx0EuDV3acTsfmRjdfR98FH4Au_QAVwLlZ1FrZU2GE"
+}
+
+

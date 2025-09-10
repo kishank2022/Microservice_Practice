@@ -1,0 +1,30 @@
+Question - What is WildFly Server? why do we need ot?
+Answer - 
+WildFly is a Jakarta EE compliant application server that supports full Java EE specs including Servlets, JSP, EJB, 
+CDI, JPA, and WebSocket. It provides modular classloading, hot deployment, clustering, and a rich web admin console.
+It’s ideal when deploying enterprise apps requiring full EE support compared to a lightweight Tomcat server.
+
+
+
+Question - .sh Files in WildFly Server
+Answer - 
+standalone.sh = Starts WildFly server in standalone mode
+domain.sh = Starts in domain mode (multi-server configuration)
+
+
+
+
+Question - Log file in WildFly Server?
+Answer - 
+$WILDFLY_HOME/standalone/log/server.log
+server.log = WildFly main server logs (errors, startup info, deployment logs)
+
+
+
+
+Question - How to Start & Stop Wildfly server?
+Answer - 
+Start WildFly = $WILDFLY_HOME/bin/standalone.sh
+Stop Wildfly Server  = $WILDFLY_HOME/bin/jboss-cli.sh --connect command=:shutdown
+
+

@@ -1,0 +1,9 @@
+-- Create Table Query 
+
+	CREATE TABLE Employee (
+	    id INT AUTO_INCREMENT PRIMARY KEY,
+	    name VARCHAR(50) NOT NULL,
+	    salary DOUBLE,
+	    department VARCHAR(50),
+	    joining_date DATE
+	);

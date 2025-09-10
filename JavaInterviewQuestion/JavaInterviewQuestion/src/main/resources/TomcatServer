@@ -1,0 +1,64 @@
+
+Question - What is Apache Tomcat?
+Answer - 
+Apache Tomcat is an open-source web server and Java Servlet Container developed by Apache Foundation.
+
+
+Question - How to change default port on Tomcat?
+Answer - 
+		Open = TOMCAT_HOME/conf/server.xml
+		<Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />
+		change port from 8080 to 8081
+
+
+
+
+Question - Where to place Jar & war Files in Tomcat Server?
+Answer - 
+	In Tomcat, the WAR file is placed in the webapps directory for deployment. Tomcat automatically extracts it and starts the application,
+	when we start/restart the tomcat. Any JAR files required by that web application should be placed in the WEB-INF/lib folder 
+	inside the deployed WAR directory. This makes them available on the classpath of the web application.
+	
+	Path = <TOMCAT_HOME>/webapps/myapp.war
+	C:\apache-tomcat-9.0.73\webapps\myapp.war  ==== http://localhost:8080/myapp
+	(Inside WEB-INF/lib/ folder of your WAR). A JAR (Java Archive) file is a library, not a full web application.
+	
+	
+
+		
+
+
+
+
+Question - Catilana.out file in Tomcat ? 
+Answer - 
+The catalina.out file is the default log file where Tomcat writes the console output of the server, such as:
+System.out.println() outputs, Server startup logs, Error messages, Stack traces of exceptions.
+It is located in {TOMCAT_HOME}/logs/catalina.out.
+Tracks your application’s print outputs.
+It can grow very large over time if you don’t rotate or clean logs regularly.
+
+
+
+
+Question - What is catalina.sh in Tomcat ?
+Answer - 
+catalina.sh is the main shell script file used to control the lifecycle of the Apache Tomcat server.
+It is located in the bin/ directory of the Tomcat installation - ( /path/to/tomcat/bin/catalina.sh )
+It provide functionality to start, stop, run, configure the Tomcat.
+When you execute startup.sh, internally it calls- ./catalina.sh start
+When you execute shutdown.sh, internally it calls- ./catalina.sh stop
+You can also run it directly- ./catalina.sh run
+catalina.sh = Main shell script that controls Tomcat lifecycle.
+startup.sh = Calls catalina.sh start.
+shutdown.sh = Calls catalina.sh stop.
+
+
+
+Question - How to restart Tomcat Server?
+Answer - 
+Go to Tomcat bin directory = cd /usr/local/tomcat/bin
+Stop Tomcat Server = ./shutdown.sh
+Start Tomcat Server = ./startup.sh
+Tomcat is now running on port 8080 (by default).
+

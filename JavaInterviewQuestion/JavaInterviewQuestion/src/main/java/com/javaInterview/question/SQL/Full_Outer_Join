@@ -1,0 +1,9 @@
+Full Outer Join 
+
+	A FULL OUTER JOIN returns, All rows from the left table, All rows from the right table, 
+	If there’s no match, NULLs appear in the columns of the table that doesn’t have a matching row.
+	
+	SELECT e.emp_id, e.emp_name, d.dept_name
+	FROM employee e
+	FULL OUTER JOIN department d
+	ON e.dept_id = d.dept_id;

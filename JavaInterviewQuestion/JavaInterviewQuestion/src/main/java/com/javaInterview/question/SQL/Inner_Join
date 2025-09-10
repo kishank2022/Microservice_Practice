@@ -1,0 +1,9 @@
+Inner Join
+
+	INNER JOIN returns only the rows that have matching values in both tables.
+	Any row without a match in the other table is excluded, so no NULLs appear from unmatched rows.
+	
+	SELECT e.emp_id, e.emp_name, d.dept_name
+	FROM employee e
+	INNER JOIN department d
+	ON e.dept_id = d.dept_id;

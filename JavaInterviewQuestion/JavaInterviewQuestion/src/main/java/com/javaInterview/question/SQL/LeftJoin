@@ -1,0 +1,14 @@
+Left Join 
+
+	A LEFT JOIN (or LEFT OUTER JOIN) in SQL is used to combine rows from two tables-
+	Returns all rows from the left table, and Matching rows from the right table.
+	If there is no match in the right table, it returns NULL for right table columns.
+	Left table = the table written before LEFT JOIN.
+	
+	Employee - emp_id, emp_name, dept_id
+	Department - dept_id, dept_name
+	
+	SELECT e.emp_id, e.emp_name, d.dept_name
+	FROM employee e
+	LEFT JOIN department d
+	ON e.dept_id = d.dept_id;

@@ -1,0 +1,33 @@
+Question - Update Table Name 
+Answer - 
+	RENAME TABLE old_table_name TO new_table_name; ( MySql, SQL Server)
+	ALTER TABLE old_table_name RENAME TO new_table_name; ( ORACLE using alter)
+	
+
+Question - Update Column name and datatype in a Table 
+Answer - 
+	In MySQL
+	
+	--This will change datatype not column name
+	ALTER TABLE table_name
+	MODIFY COLUMN old_column_name new_datatype;
+	
+	-- to rename the column in table
+	ALTER TABLE table_name
+	CHANGE COLUMN old_column_name new_column_name current_datatype;
+	
+	--To rename column and change datatype
+	ALTER TABLE table_name
+	CHANGE COLUMN old_column_name new_column_name new_datatype;
+	
+	In Oracle
+	
+	-- Rename column
+	ALTER TABLE table_name
+	RENAME COLUMN old_column_name TO new_column_name;
+	
+	-- Change datatype
+	ALTER TABLE table_name
+	MODIFY (column_name new_datatype);
+	
+	

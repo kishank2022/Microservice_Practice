@@ -1,0 +1,20 @@
+Agile Questions - 
+
+1. What is Agile Methodology?
+Answer - Agile is a software development approach where requirements and solutions evolve through collaboration between self-organizing, cross-functional teams.
+
+2. What are the key principles of Agile?
+Answer - Collaboration between business & developers.
+		 Sustainable development.
+		 Regular reflection and improvement.
+
+3. What is the difference between Agile and Waterfall?
+Answer - Waterfall: Sequential, rigid, once a phase is done → cannot go back easily.
+		 Agile: Iterative, flexible, requirements can change anytime.
+ 		 Agile delivers working software faster and continuously.
+		 
+4. What is Scrum in Agile?
+Answer - Scrum is the most widely used Agile framework.
+		 It uses fixed-length iterations called Sprints (1–4 weeks) to deliver working software incrementally.
+		 
+5. 
