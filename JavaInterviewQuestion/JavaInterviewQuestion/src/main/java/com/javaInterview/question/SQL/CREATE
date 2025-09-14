@@ -7,3 +7,17 @@
 	    department VARCHAR(50),
 	    joining_date DATE
 	);
+	
+	
+-- Backup table query
+
+	CREATE TABLE EMPLOYEE_BACKUP 
+	AS SELECT * FROM EMPLOYEE;
+	
+	
+	
+	-- The condition 1=0 is always false, so it will not return any data, but it will return the structure 
+	and column details of the existing table.
+	 
+	CREATE TABLE employee_backup AS
+	SELECT * FROM employee WHERE 1=0;
