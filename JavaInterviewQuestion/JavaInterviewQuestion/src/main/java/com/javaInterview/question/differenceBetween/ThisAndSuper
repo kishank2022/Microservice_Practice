@@ -1,0 +1,40 @@
+	this Keyword - 
+		1. Refers to the current object of the class.
+		2. Call another constructor in the same class (this() constructor chaining).
+		3. Differentiate instance variables and parameters when they have the same name.
+			// Here hotelName is same in method parameter and variable declared in global area.
+			public void setHotelName(String hotelName) {
+				this.hotelName = hotelName;
+				}
+				
+				
+	super Keyword - 
+		1. Refers to the parent (superclass) object.
+		2. Call parent class constructor (super()).
+		Access parent class variables (when child class has same variable names).
+		Call parent class methods (when overridden in child class).
+		
+		
+	We cannot use both this() and super() together in a constructor, because both must be the first statement in a constructor.
+	class Building {
+	    Building() {
+	        System.out.println("Building constructor called.");
+	    }
+	}
+	class Hotel extends Building {
+	    String hotelId;
+	    String hotelName;
+	    public Hotel(String hotelId, String hotelName) {
+		        super();                // Call parent constructor // Using super() ensures parent class initialization.
+		        this.hotelId = hotelId;  // Initialize child variables
+		        this.hotelName = hotelName;
+		        System.out.println("Hotel constructor called: " + hotelName);
+		    }
+		}	
+	public class TestHotel {
+	    public static void main(String[] args) {
+	        Hotel h = new Hotel("H001", "Sunrise Hotel");
+	        // Building constructor called. //Hotel constructor called: Sunrise Hotel
+	    }
+	}
+	
