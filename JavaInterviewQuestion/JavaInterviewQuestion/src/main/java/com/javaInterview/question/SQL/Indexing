@@ -1,0 +1,22 @@
+Indexing in SQL - 
+
+	An index in SQL is a special data structure (similar to a table of contents) that improves the speed of data retrieval 
+	operations on a database table.
+	Faster data retrieval for SELECT queries. Helps improve query performance for large tables.
+	Takes additional storage space. Slows down INSERT, UPDATE, DELETE (due to extra index updates).
+	
+	-- Basic Index
+	CREATE INDEX empIdIndex ON Employee (emp_id);
+	
+	-- Unique Index
+	CREATE UNIQUE INDEX empIdIndex ON Employee (emp_id);
+	
+	-- DROP Index
+	DROP INDEX empIdIndex ON Employee;
+	
+	Important Points- 
+	Use indexes on columns which are used frequently in WHERE, JOIN, and ORDER BY.
+	Don’t index columns that are volatile (frequently updated)/ or the column values which are changing frequently.
+	
+	
+	

@@ -1,0 +1,12 @@
+	Intersection 
+	
+	INTERSECTION returns only the rows that are common to both SELECT queries.
+	MySQL does not directly support INTERSECT → you can simulate with INNER JOIN or IN clause.
+	
+	SELECT emp_id FROM employee_ids
+	INTERSECT
+	SELECT emp_id FROM new_hires;
+	
+	-- MySQL uses IN Clause, it does not support INTERSECT
+	SELECT emp_id FROM employee_ids
+	WHERE emp_id IN (SELECT emp_id FROM new_hires);
