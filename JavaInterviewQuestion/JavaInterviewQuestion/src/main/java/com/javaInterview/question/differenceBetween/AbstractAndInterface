@@ -1,0 +1,4 @@
+	Abstract Class 
+	A class with abstract (unimplemented) methods and/or concrete methods.
+	Abstract methods can have public, protected, or default access.
+	When classes are closely related or you need common behavior and state. 
