@@ -1,0 +1,103 @@
+----------- Kafka 
+
+C:\kafka\kafka_2.13-3.9.1\kafka_2.13-3.9.1>bin\windows\zookeeper-server-start.bat config\zookeeper.properties  
+
+bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
+bin/kafka-storage.sh format --standalone -t kishan -c config/server.properties
+
+
+
+
+C:\Program Files\Java\jdk-17.0.1\bin
+
+
+C:\Program Files\Java\jdk-17\bin
+
+WE ARE USING WINDOWS SO, WE WILL FIRE .bat FILE IN POWERSHELL CMD
+step 1 - fire the below command first before running the kafka server.
+this command is used to create a cluster id with name kafka1 in folder [ D:\kaf\kafka4\kraft-combined-logs]
+fire the below command in windows power shell 
+PS D:\kaf\kafka4> .\bin\windows\kafka-storage.bat format --standalone -t kafka1 -c .\config\server.properties
+this will create a cluster kafka1 
+
+.\bin\windows\kafka-storage.bat format --standalone -t kafka1 -c .\config\server.properties --ignore-formatted
+
+
+step 2 - start the kafka server 
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+Step - To create a topic in kafka fire below command 
+PS D:\kaf\kafka4> .\bin\windows\kafka-topics.bat --create --topic kishan-topic-2 --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+2025-08-24T08:52:43.119267400Z main ERROR Reconfiguration failed: No configuration found for '266474c2' at 'null' in 'null'
+Created topic kishan-topic-2.
+
+
+
+Step - If i want to see the list of topics in the kafka server then fire the below command in the windows powerShell
+PS D:\kaf\kafka4> .\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+2025-08-24T08:34:18.554004500Z main ERROR Reconfiguration failed: No configuration found for '266474c2' at 'null' in 'null'
+__consumer_offsets
+location-update-topic
+PS D:\kaf\kafka4>
+
+
+
+
+
+Step - to describe a topic in kafka fire the below command 
+PS D:\kaf\kafka4> .\bin\windows\kafka-topics.bat --describe --topic location-update-topic --bootstrap-server localhost:9092
+2025-08-24T08:38:35.161154500Z main ERROR Reconfiguration failed: No configuration found for '266474c2' at 'null' in 'null'
+Topic: location-update-topic    TopicId: RRZo84mxRciMF9UcimZM5A PartitionCount: 1       ReplicationFactor: 1    Configs: segment.bytes=1073741824
+        Topic: location-update-topic    Partition: 0    Leader: 1       Replicas: 1     Isr: 1  Elr:    LastKnownElr:
+PS D:\kaf\kafka4>
+
+
+
+
+Step - When our kafka server is running and we want to send any message to the server fire the below command 
+PS D:\kaf\kafka4> .\bin\windows\kafka-console-producer.bat --topic location-update-topic --bootstrap-server localhost:9092
+2025-08-24T08:43:12.872980900Z main ERROR Reconfiguration failed: No configuration found for '266474c2' at 'null' in 'null'
+>kisahn
+
+
+
+
+Step - To read the log that is hitting our kafka server, fire the below command
+PS D:\kaf\kafka4> .\bin\windows\kafka-console-consumer.bat --topic location-update-topic --from-beginning --bootstrap-server localhost:9092
+2025-08-24T08:46:49.875255800Z main ERROR Reconfiguration failed: No configuration found for '266474c2' at 'null' in 'null'
+b460a1de-47f0-4861-be5a-7cae5b31cfa1
+kisahn
+
+
+
+ online.cell@sbilife.co.in
+ 
+ SUBJECT YH DALO PRASAD SIR M21399
+4CCZ500748 - PROPOSAL NO.
+ 
+ AADHAR CARD
+ PANCARD
+ PASPORTPHOTO
+ 6 MONTH BANK STATEMENT SALARY VALA 
+ 
+ 
+ 
+ 
+ 
+ ---- kishan kafka 02/10/2025
+ 
+ Step - to describe a topic in kafka fire the below command 
+PS D:\kaf\kafka4> .\bin\windows\kafka-topics.bat --describe --topic location-update-topic --bootstrap-server localhost:9092
+2025-08-24T08:38:35.161154500Z main ERROR Reconfiguration failed: No configuration found for '266474c2' at 'null' in 'null'
+Topic: location-update-topic    TopicId: RRZo84mxRciMF9UcimZM5A PartitionCount: 1       ReplicationFactor: 1    Configs: segment.bytes=1073741824
+        Topic: location-update-topic    Partition: 0    Leader: 1       Replicas: 1     Isr: 1  Elr:    LastKnownElr:
+PS D:\kaf\kafka4>
+
+below command is used to describe a topic with name java-techie-topic-1
+.\bin\windows\kafka-topics.bat --describe --topic java-techie-topic-1 --bootstrap-server localhost:9092
+
+
+below command is used to create a topic with name java-techie-topic-2
+.\bin\windows\kafka-topics.bat --create --topic java-techie-topic-2 --bootstrap-server localhost:9092 --partitions 4 --replication-factor 1
+ ---- kishan kafka 02/10/2025
