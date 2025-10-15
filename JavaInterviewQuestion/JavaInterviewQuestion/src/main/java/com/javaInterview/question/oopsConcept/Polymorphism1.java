@@ -17,6 +17,7 @@ public class Polymorphism1 {
 /*
  	Parent p = new Child();  // Upcasting
  	Upcasting = Converting a child class object reference into a parent class reference.
+ 	creating object of Child class and giving reference to parent class
 
 	
 	Child c = (Child) p;  // Downcasting
