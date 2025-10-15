@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PolicyApproveResultResponseDto {
 
 	@JsonProperty("ApprovePolNo")
-	private String approvePolNo;
+	private String approvePolNo = "";
 	@JsonProperty("ApprovePolSysId")
-    private String aprovePolSysId;
+    private String aprovePolSysId = "";
 	@JsonProperty("Err_Desc")
-    private String err_Desc;
+    private String err_Desc = "";
 	@JsonProperty("Err_Code")
-    private String err_Code;
+    private String err_Code = "";
 	public PolicyApproveResultResponseDto() {
 		super();
 		// TODO Auto-generated constructor stub

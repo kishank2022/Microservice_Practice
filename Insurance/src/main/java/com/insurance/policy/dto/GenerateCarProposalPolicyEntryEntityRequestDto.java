@@ -438,6 +438,19 @@ public class GenerateCarProposalPolicyEntryEntityRequestDto {
 
     @JsonProperty("Insured_photoExt")
     private String Insured_photoExt;
+    
+    @JsonProperty("PHYSICALPOLICY")
+    private String physical_policy;  // 1 means isko physical policy chahiye, and 0 means isko physical policy nhi chahiye 
+    
+    
+
+	public String getPhysical_policy() {
+		return physical_policy;
+	}
+
+	public void setPhysical_policy(String physical_policy) {
+		this.physical_policy = physical_policy;
+	}
 
 	public GenerateCarProposalPolicyEntryEntityRequestDto() {
 		super();

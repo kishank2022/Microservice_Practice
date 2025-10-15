@@ -30,6 +30,18 @@ public class PolicyApproveRequestDto {
     private String ChequeClearType;
 	@JsonProperty("CashType")
     private String CashType;
+	
+	@JsonProperty("PremiumAmt")
+    private String PremiumAmt;
+	
+	
+	
+	public String getPremiumAmt() {
+		return PremiumAmt;
+	}
+	public void setPremiumAmt(String premiumAmt) {
+		PremiumAmt = premiumAmt;
+	}
 	public PolicyApproveRequestDto() {
 		super();
 		// TODO Auto-generated constructor stub
