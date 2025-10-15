@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PaymentStatusResultResponseDto {
 
 	@JsonProperty("ErrorMessage")
-	private String errorMessage;
+	private String errorMessage = "";
 	@JsonProperty("Result")
-    private String result;
+    private String result = "";
 	@JsonProperty("SuccessMessage")
-    private String successMessage;
+    private String successMessage = "";
 	public PaymentStatusResultResponseDto() {
 		super();
 		// TODO Auto-generated constructor stub

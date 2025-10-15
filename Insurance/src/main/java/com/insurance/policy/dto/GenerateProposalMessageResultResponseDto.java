@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GenerateProposalMessageResultResponseDto {
 
 	@JsonProperty("Result")
-	private String result;
+	private String result = "";
 	
 	@JsonProperty("ErrorMessage")
-	private String errorMessage;
+	private String errorMessage = "";
 	
 	@JsonProperty("SuccessMessage")
-	private String successMessage;
+	private String successMessage = "";
 	public GenerateProposalMessageResultResponseDto() {
 		super();
 		// TODO Auto-generated constructor stub

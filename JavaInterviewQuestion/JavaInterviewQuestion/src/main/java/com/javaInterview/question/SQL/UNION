@@ -1,0 +1,21 @@
+Union 
+	UNION is used to combine the result sets of two or more SELECT queries.
+	It removes duplicate rows by default. The number of columns and their datatypes must match in all SELECT statements.
+	Slower in performance, it need to find and remove the duplicates.
+	
+	SELECT emp_id FROM employee_ids
+	UNION
+	SELECT emp_id FROM new_hires;
+	
+	
+	
+	
+UNION ALL 
+	Combine results, keep all rows (including duplicates).
+	Faster in performance( because we don't need to find and remove duplicate)
+	
+	SELECT emp_id, emp_name
+	FROM employees_2024
+	UNION ALL
+	SELECT emp_id, emp_name
+	FROM employees_2025;

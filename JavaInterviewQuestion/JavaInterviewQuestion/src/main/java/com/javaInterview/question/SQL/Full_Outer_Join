@@ -7,3 +7,12 @@ Full Outer Join
 	FROM employee e
 	FULL OUTER JOIN department d
 	ON e.dept_id = d.dept_id;
+	
+	--In Mysql Full Outer Join doesnot work so we use Union here 
+	SELECT e.emp_id, e.emp_name, d.dept_name
+	FROM employee e
+	LEFT JOIN department d ON e.dept_id = d.dept_id
+	UNION
+	SELECT e.emp_id, e.emp_name, d.dept_name
+	FROM employee e
+	RIGHT JOIN department d ON e.dept_id = d.dept_id;
