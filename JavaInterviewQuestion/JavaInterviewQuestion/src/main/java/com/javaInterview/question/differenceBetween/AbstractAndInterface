@@ -1,4 +1,13 @@
 	Abstract Class 
-	A class with abstract (unimplemented) methods and/or concrete methods.
-	Abstract methods can have public, protected, or default access.
-	When classes are closely related or you need common behavior and state. 
+		A class with abstract (unimplemented) methods and/or concrete methods.
+		Abstract methods can have public, protected, or default access.
+		When classes are closely related or you need common behavior and state. 
+		Can Have constructors.
+		public, protected, private access modifier
+		
+	Interface
+		A collection of abstract methods (by default) that define a contract. 
+		A class that implements an interface must provide implementations for its methods.
+		Does not have constructors.
+		public access modifier.
+	
