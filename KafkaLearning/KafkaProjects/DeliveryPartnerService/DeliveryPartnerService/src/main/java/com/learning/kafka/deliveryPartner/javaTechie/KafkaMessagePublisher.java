@@ -5,6 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import com.learning.kafka.deliveryPartner.constants.AppConstants;
@@ -32,7 +33,18 @@ public class KafkaMessagePublisher {
 		//CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("java-techie-topic-2", message);
 		
 		// we have cretaed a topic in configuration class and we are using that topic name using sping boot configuration // KafkaProducerConfig.java
-		CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("java-techie-5", message);
+//		CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("java_topic_5", new String(message));
+		
+		// we can also define that ki yhi partition pr pura data ko bhejo 
+		// this way we can tell producer ki bhai producer isse hi partition pe data send karo, ham yh configuration endUser pe bhi kar sakte hai 
+		// public CompletableFuture<SendResult<K, V>> send(String topic, Integer partition, K key, @Nullable V data)
+		
+		CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("java_topic_5",3, null, new String(message));
+		
+		/*// we have used this for learning the partitions 
+		kafkaTemplate.send("java_topic_5",3, null, new String("three"));
+		kafkaTemplate.send("java_topic_5",2, null, new String("two"));
+		*/
 		
 		future.whenComplete((result, exception) -> {
 			

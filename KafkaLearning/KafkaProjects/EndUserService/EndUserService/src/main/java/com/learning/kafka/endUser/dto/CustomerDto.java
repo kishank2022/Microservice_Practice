@@ -1,4 +1,5 @@
-package com.learning.kafka.deliveryPartner.javaTechie;
+package com.learning.kafka.endUser.dto;
+
 
 public class CustomerDto {
 
@@ -15,7 +16,6 @@ public class CustomerDto {
 	}
 	public CustomerDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {

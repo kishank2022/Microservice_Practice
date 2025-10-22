@@ -3,6 +3,7 @@ package com.learning.kafka.endUser.javatechiee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Service;
 
 import com.learning.kafka.endUser.constants.AppConstants;
@@ -29,6 +30,18 @@ public class KafkaMessageListener {
 	
 	@KafkaListener(topics = "java-techie-5" , groupId = AppConstants.GROUP_ID5)
 	public void consumeMessage3(String message) {
+		log.info("consumer3 consume "+ message+" |||");
+	}
+	
+//	@KafkaListener(topics = "java_topic_5" , groupId = AppConstants.GROUP_ID5, containerFactory = "stringKafkaListenerContainerFactory")
+//	public void consumeMessage5(String message) {
+//		log.info("consumer3 consume "+ message+" |||");
+//	}
+	
+	// this way we can define that, ki hamko yh partition se listen karna hai and topic ka name mention karo 
+	@KafkaListener(topics = "java_topic_5" , groupId = AppConstants.GROUP_ID5, containerFactory = "stringKafkaListenerContainerFactory",
+				topicPartitions = {@TopicPartition(topic = "java_topic_5", partitions = {"2"})})
+	public void consumeMessage5_1(String message) {
 		log.info("consumer3 consume "+ message+" |||");
 	}
 	

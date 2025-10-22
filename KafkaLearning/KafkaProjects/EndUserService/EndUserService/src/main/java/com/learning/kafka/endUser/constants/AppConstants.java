@@ -7,4 +7,5 @@ public class AppConstants {
 	public static final String GROUP_ID2 = "group-2";
 	public static final String GROUP_ID4 = "group-4";
 	public static final String GROUP_ID5 = "group-5";
+	public static final String CUSTOMER_GROUP_ID_1 = "CUSTOMER_GROUP_ID_1";
 }

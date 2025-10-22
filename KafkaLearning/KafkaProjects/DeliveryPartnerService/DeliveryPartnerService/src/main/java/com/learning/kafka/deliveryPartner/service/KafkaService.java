@@ -12,7 +12,7 @@ import com.learning.kafka.deliveryPartner.constants.AppConstants;
 public class KafkaService {
 
 	@Autowired
-	private KafkaTemplate<String, String> kafkaTemplate;
+	private KafkaTemplate<String, Object> kafkaTemplate;
 	
 	public boolean updateLocation(String location) {
 		kafkaTemplate.send(AppConstants.LOCATION_TOPIC_NAME, location);

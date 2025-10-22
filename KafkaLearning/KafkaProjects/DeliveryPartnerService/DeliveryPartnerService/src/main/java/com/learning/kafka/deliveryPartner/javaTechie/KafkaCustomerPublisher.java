@@ -13,17 +13,23 @@ public class KafkaCustomerPublisher {
 	@Autowired
 	private KafkaTemplate<String, Object> kafkaTemplate;
 
-	public void sendMessage(CustomerDto customer) {
+	public CustomerDto sendMessage(CustomerDto customer) {
 
-
-		CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("java-techie-5", customer);
-		future.whenComplete((result, exception) -> {
-			System.out.println("Partition No.>>>" + result.getRecordMetadata().partition());
-			if (exception == null) {
-				System.out.println("send>>" + message + ">>>>" + result.getRecordMetadata().offset());
-			} else {
-				System.out.println("Not Sent message>>>>" + exception.getMessage());
-			}
-		});
+		try {
+			CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("java_customer_topic_1", customer);
+			future.whenComplete((result, exception) -> {
+				System.out.println("Partition No.>>>" + result.getRecordMetadata().partition());
+				if (exception == null) {
+					System.out.println("send>>" + customer.toString() + ">>>>" + result.getRecordMetadata().offset());
+				} else {
+					System.out.println("Not Sent  message>>>>" + exception.getMessage());
+				}
+			});
+			return customer;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Exception occured " + e.getMessage());
+			return new CustomerDto();
+		}
 	}
 }
