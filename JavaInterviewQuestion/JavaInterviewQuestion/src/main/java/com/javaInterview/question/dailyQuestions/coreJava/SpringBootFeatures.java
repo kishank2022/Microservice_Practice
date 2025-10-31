@@ -14,4 +14,5 @@ public class SpringBootFeatures {
  	6. microservices friendly architecture
  	7. Dev Tools dependency 
  	
+ 	
  */
