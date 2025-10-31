@@ -9,7 +9,7 @@ public class ConstructorConcept {
 		// jo default constructor hai usko hide kardega
 		// and hamko bolega aapka constructor use karo
 	}
-	*/
+	*/ 
 	public static void main(String[] args) {
 		// abhi hame koi bhi constructor banaya nhi hai tho java bydefault ek constructor banadeta hai with no arguments.
 		ConstructorConcept constructor1 = new ConstructorConcept();// it is not showing error 
