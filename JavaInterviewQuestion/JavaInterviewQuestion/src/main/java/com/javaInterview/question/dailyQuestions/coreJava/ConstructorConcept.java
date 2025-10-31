@@ -1,7 +1,9 @@
 package com.javaInterview.question.dailyQuestions.coreJava;
 
+// Question 24 - ConstructorConcept 
 public class ConstructorConcept {
 
+	
 	/*
 	public ConstructorConcept(String name)
 	{

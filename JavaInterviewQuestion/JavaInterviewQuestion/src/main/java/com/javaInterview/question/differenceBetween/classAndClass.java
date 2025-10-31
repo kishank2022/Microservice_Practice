@@ -4,7 +4,8 @@ public class classAndClass {
 
 }
 /*
-
+		Question 17
+	
 	class - 
 	1. It is a keyword in Java used to declare a class.
 	2. class is part of the Java syntax.
