@@ -40,6 +40,6 @@ public class Practice {
 								.findFirst();
 		System.out.println(opt1.isPresent()? opt1.get() : "No"  );
 								
-		
+		System.out.println("OKOK");
 	}
 }
