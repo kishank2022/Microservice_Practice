@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class Practice {
 
 	public static void main(String[] args) {
-		//int [] array1 = {1,2,3,4,5,6,7,8,2,5,6};
+//		int [] array1 = {1,2,3,4,5,6,7,8,2,5,6};
 //		Set<Integer> set1 = new HashSet<>();
 //		Optional<Integer> op2 = Arrays.stream(array1).boxed().filter(number -> !set1.add(number)).skip(1).findFirst();
 //		if(op2.isPresent()) {
@@ -19,9 +19,9 @@ public class Practice {
 //			System.out.println(op2.get());
 //		}
 		
-		//int [] array1 = {2,3,4,5,6,1,7,8,2,5,6};
-		//Optional<Integer> opt1 = Arrays.stream(array1).boxed().distinct().sorted().findFirst();
-		//Optional<Integer> opt1 = Arrays.stream(array1).boxed().distinct().sorted(Comparator.reverseOrder()).findFirst();
+//		int [] array1 = {2,3,4,5,6,1,7,8,2,5,6};
+//		Optional<Integer> opt1 = Arrays.stream(array1).boxed().distinct().sorted().findFirst();
+//		Optional<Integer> opt1 = Arrays.stream(array1).boxed().distinct().sorted(Comparator.reverseOrder()).findFirst();
 //		if(opt1.isPresent()) {
 //			System.out.println(opt1.get());
 //		}
@@ -39,7 +39,7 @@ public class Practice {
 								.filter(letter -> !set1.add(letter))
 								.findFirst();
 		System.out.println(opt1.isPresent()? opt1.get() : "No"  );
-								
-		System.out.println("OKOK");
+//								
+//		System.out.println("OKOK");
 	}
 }
