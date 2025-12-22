@@ -4,7 +4,7 @@ package com.javaInterview.question.coreJava;
 public class StringMethod {
 
 	public static void main(String[] args) {
-		String s1 = "HeOllo World";
+		String s1 = "HeOllo Kishan";
 		String s2 = "";
 		
 		// Basic Methods 
