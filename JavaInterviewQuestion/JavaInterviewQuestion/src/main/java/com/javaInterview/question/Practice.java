@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Practice {
 
-	public static void main(String[] args) {
+	public static void main_1(String[] args) {
 //		int [] array1 = {1,2,3,4,5,6,7,8,2,5,6};
 //		Set<Integer> set1 = new HashSet<>();
 //		Optional<Integer> op2 = Arrays.stream(array1).boxed().filter(number -> !set1.add(number)).skip(1).findFirst();
@@ -41,5 +41,9 @@ public class Practice {
 		System.out.println(opt1.isPresent()? opt1.get() : "No"  );
 //								
 //		System.out.println("OKOK");
+	}
+	public static void main(String[] args) {
+		Optional optional = Optional.empty();
+		System.out.println(optional.get());
 	}
 }

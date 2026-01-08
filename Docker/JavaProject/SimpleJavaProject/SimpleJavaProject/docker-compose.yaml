@@ -1,0 +1,6 @@
+version: "3.8"
+
+services:
+  docker_compose_1:
+    build: .
+    container_name: docker_compose_1

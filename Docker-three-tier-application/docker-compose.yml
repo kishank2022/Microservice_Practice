@@ -1,0 +1,34 @@
+services:
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  three-tier-application:
+    build: ./three-tier-application
+    container_name: three-tier-application
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    restart: always
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    depends_on:
+      - three-tier-application
+    ports:
+      - "80:80"
+    restart: always
