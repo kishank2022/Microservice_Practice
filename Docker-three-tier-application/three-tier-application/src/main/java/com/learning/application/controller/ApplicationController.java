@@ -28,7 +28,4 @@ public class ApplicationController {
 		name = application_service.saveName(name);
 		return new ResponseEntity<>(name, HttpStatus.OK);
 	}
-	
-	
-
 }
