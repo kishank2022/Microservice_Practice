@@ -28,7 +28,6 @@ public class JwtAuthentication1Application implements CommandLineRunner {
 	}
 
 	// // Step 17 - Created default user with role admin in main method class
-	
 	public void run(String... args) {
 		List<User> adminAccount = userRepository.findByRole(Role.ADMIN);
 		if(adminAccount.size() < 1) {
