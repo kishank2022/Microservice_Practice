@@ -53,12 +53,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		}
 		jwt = authHeader.substring(7);
 		userName = jwtService.extractUserName(jwt);
-		
+		System.out.println("Username extracted from jwt token:"+userName);
 		if(!userName.isEmpty() && SecurityContextHolder.getContext().getAuthentication() == null) {
 			UserDetails userDetails = userService.userDetailsService().loadUserByUsername(userName);
 			
 			// Step 10 vapas yha pe aake code karo expiration ka 
 			if(jwtService.isTokenValid(jwt, userDetails)) {
+				System.out.println("Authorities:"+userDetails.getAuthorities());
 				SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
 				UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities()

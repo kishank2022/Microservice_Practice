@@ -12,3 +12,83 @@ Response -
 }
 
 
+
+-------------------------------------  Working Flow start --------------------------------
+When we start our application tho hamne run method ko override kiya hai and bola hai ki if admin ke role ka user hai tho thik hai 
+if nhi hai tho ham ek default user banege and uska role admin banake application ke start hote hi user create kardege. 
+
+-----Signin Request & response
+POST url - http://localhost:8080/api/v1/auth/signin  
+Request - 
+{
+    "userName": "admin",
+    "password": "admin"
+}
+Response - 
+{
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3MjI1NTQ5NSwiZXhwIjoxNzcyMjU2OTM1fQ.36T0s9chZzLyiVPArYq9mS1Vy5iWTJN2Bb78PrGFgHE",
+    "refreshToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3MjI1NTQ5NSwiZXhwIjoxNzcyODYwMjk1fQ.iRR8yQq75XdSP_uTWlfIhlmm8t29mtb_yIQL_H-cZ7o"
+}
+
+-----Signup request & response
+POST URL - http://localhost:8080/api/v1/auth/signup   
+Request - 
+{
+    "userName": "user1",
+    "userEmail": "user1@gmail.com",
+    "password": "user1"
+
+}
+Response - 
+{
+    "userId": 2,
+    "userName": "user1",
+    "userEmail": "user1@gmail.com",
+    "password": "$2a$10$7mGCQfkDljFJZ/ljdCPkY.4Mo2d4QRhIUBUsMSvINO6CZuxrIQ7du",
+    "role": "USER",
+    "authorities": [
+        {
+            "authority": "USER"
+        }
+    ],
+    "username": "user1",
+    "enabled": true,
+    "accountNonExpired": true,
+    "credentialsNonExpired": true,
+    "accountNonLocked": true
+}
+
+URL - http://localhost:8080/api/v1/admin/
+http://localhost:8080/api/v1/user/
+v1/admin vale endpoints ko access karne ke liye ham Header me 
+Authorization = Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3MjI1NTQ5NSwiZXhwIjoxNzcyMjU2OTM1fQ.36T0s9chZzLyiVPArYq9mS1Vy5iWTJN2Bb78PrGFgHE
+Bearer likh ke admin ka signin karne ke baad jo token mila hai hamko vo header me dalege. response me hamko admin related endpoints ko access karne milega.
+If hamne user related endpoint ko access karne ka try kiya tho hamko forbidden ka error dega ( 403 Forbidden )
+
+JWT === Json Web Token
+xxxxx.yyyyy.zzzzz === Header.Payload.Signature
+Header contains alg=HS256, type=JWT all this information
+Payload contains subject(username), issuedAt, expiryDetails 
+Signature contains secret key
+Jwts.builder().setSubject().setIssuedAt().setExpration().signWith().compact();
+here we are doing SYMMETRIC authentication because we are using one secret key for both generating and validating token.
+HS256 = HMAC + SHA-256
+Hash based message authentication code, secure hash algorithm with 256 bit output
+ 
+-- working 
+Step1 - user name ki entity banao and implements karo org.springframework.security.core.userdetails.UserDetails se.
+Step2 - Enum class create karo, uske andar do constant roles ko define karo USER, ADMIN
+Step3 - Repository create karo, add the following dependency in pom.xml file 
+		<artifactId>spring-boot-starter-security</artifactId>
+		<artifactId>jjwt-api</artifactId>
+		<artifactId>jjwt-impl</artifactId>
+		<artifactId>jjwt-jackson</artifactId>
+Step4 - 
+
+--
+
+
+
+
+
+-----------------------------------------Working Flow  end --------------------------------

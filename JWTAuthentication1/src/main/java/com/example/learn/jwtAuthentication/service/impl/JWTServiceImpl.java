@@ -62,6 +62,9 @@ public class JWTServiceImpl implements JWTService{
 	// Step 6 - extract userName from token 
 	// Step 7 - create JwtAuthenticationFilter.java class
 	public String extractUserName(String token) {
+		String userName = extractClaim(token, Claims::getSubject);
+		System.out.println("userName:"+userName);
+//		return userName;
 		return extractClaim(token, Claims::getSubject);
 	}
 	

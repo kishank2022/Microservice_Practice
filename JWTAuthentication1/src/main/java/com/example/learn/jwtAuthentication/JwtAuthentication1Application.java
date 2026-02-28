@@ -35,8 +35,8 @@ public class JwtAuthentication1Application implements CommandLineRunner {
 			user.setUserName("admin");
 			user.setPassword(new BCryptPasswordEncoder().encode("admin"));
 			user.setUserEmail("admin@gmail.com");
-//			user.setRole(Role.ADMIN);
-			user.setRole(Role.USER);
+			user.setRole(Role.ADMIN);
+//			user.setRole(Role.USER);
 			userRepository.save(user);
 		}
 	}
