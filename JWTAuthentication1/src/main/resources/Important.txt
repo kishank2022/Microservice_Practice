@@ -70,11 +70,47 @@ xxxxx.yyyyy.zzzzz === Header.Payload.Signature
 Header contains alg=HS256, type=JWT all this information
 Payload contains subject(username), issuedAt, expiryDetails 
 Signature contains secret key
-Jwts.builder().setSubject().setIssuedAt().setExpration().signWith().compact();
+--Generating token === Jwts.builder().setSubject().setIssuedAt().setExpration().signWith().compact();
 here we are doing SYMMETRIC authentication because we are using one secret key for both generating and validating token.
 HS256 = HMAC + SHA-256
 Hash based message authentication code, secure hash algorithm with 256 bit output
- 
+
+-- creating url authority access 
+create a bean with SecurityFilterChain as return type. yh method internally work hoga jo bhi user url ko access karega vo usko phle uska role puchega, and fir access dega.
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http.csrf(AbstractHttpConfigurer::disable)
+			.authorizeHttpRequests( request -> request.requestMatchers("/api/v1/auth/**").permitAll()
+					.requestMatchers("/api/v1/admin/**").hasAuthority(Role.ADMIN.name())  // here we are giving role wise access to url
+					.requestMatchers("/api/v1/user/**").hasAuthority(Role.USER.name())
+					.anyRequest().authenticated()
+					)
+			.sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+			.authenticationProvider(authenticationProvider()) // step 12 authenticationProvider yh method banao 
+			.addFilterBefore( jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+		return http.build();
+	}
+	
+-- TOKEN me se data nikalna ka kaam 
+import io.jsonwebtoken.Claims;
+	
+	// step 5 -  create extractClaims method and  extractAllClaims methods 
+	private <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
+		final Claims claims = extractAllClaims(token);
+		return claimsResolver.apply(claims);
+	}
+	// step 5 -  create extractClaims method and  extractAllClaims methods 
+	private Claims extractAllClaims(String token) {
+		return Jwts.parserBuilder()
+				.setSigningKey(getSigninKey())
+				.build()
+				.parseClaimsJws(token)
+				.getBody();
+	}
+	String userName = extractClaim(token, Claims::getSubject);
+	Date token_expiry_date = extractClaim(token, Claims::getExpiration);
+	
+
 -- working 
 Step1 - user name ki entity banao and implements karo org.springframework.security.core.userdetails.UserDetails se.
 Step2 - Enum class create karo, uske andar do constant roles ko define karo USER, ADMIN
