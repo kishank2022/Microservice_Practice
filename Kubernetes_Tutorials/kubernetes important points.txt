@@ -1,0 +1,32 @@
+execute all this command in windows powershell administrative mode.
+
+Step1 - Get the execution policy
+PS C:\WINDOWS\system32> Get-ExecutionPolicy
+RemoteSigned
+
+If it is not restricted then process step 2.
+
+Step2- execute the below command to install chocolatey in the system.
+
+PS C:\WINDOWS\system32> Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+when the chocolatey is installed in the system, then restart the powershell in administrative mode again,  and check the version of chocolatey
+PS C:\WINDOWS\system32> choco --version
+2.6.0
+
+Step3 - After successfully installation of chocolatey, install kubectl and kind
+
+install kubectl using below command 
+PS C:\WINDOWS\system32> choco install kubernetes-cli -y
+
+install kind using the below command 
+PS C:\WINDOWS\system32> choco install kind -y
+
+check version of kubectl, kind, docker using the below commands
+PS C:\WINDOWS\system32> kubectl version --client
+Client Version: v1.34.1
+Kustomize Version: v5.7.1
+PS C:\WINDOWS\system32> kind --version
+kind version 0.31.0
+PS C:\WINDOWS\system32> docker --version
+Docker version 29.2.1, build a5c7197
