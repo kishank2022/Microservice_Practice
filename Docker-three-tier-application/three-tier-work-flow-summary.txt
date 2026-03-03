@@ -1,0 +1,112 @@
+Step 1 - 
+
+mysql name se folder banao and uske andar init.sql file banao
+inside init.sql file write query to create database, use database, and create table query, inside default data into table query.
+
+Step 2 - 
+
+nginx name ka folder banao uske andar 
+Dockerfile and nginx.conf file ko create karo
+
+inside Dockerfile
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/nginx.conf
+
+inside nginx.conf
+events {}
+http {
+    upstream springboot {
+        server three-tier-application:8080;
+    }
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://three-tier-application:8080;
+        }
+    }
+}
+
+events {} - inside this block we are doing 
+1) worker connections, 2) connection handling, 3) performance tuning, we are controlling all this configurations in this event block
+
+inside upstream springboot{} block we are defining the applications running on their respective ports.
+
+inside server block 
+1) Client send request to GET http://localhost/api/users , 2) Nginx receive request at port 80, 3) Nginx matches location here we have location / ( / means matches all requests)
+4) proxy_pass means forward request to this url in backend now the url will become (http://three-tier-application:8080/api/users) 
+5) Browser -> http://localhost -> Nginx (port 80) -> proxy_pass -> three-tier-application:8080 -> Spring Boot App -> Response -> Nginx -> Browser
+
+Step 3 - 
+
+three-tier-application name se ek spring boot application create karo. Spring boot application run karo and start ho ra 8080 port 
+
+Create Dockerfile inside Dockerfile write 
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY target/three-tier-application.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+Working -> Start Container -> Go to /app directory -> Run java app.jar application -> Spring boot application start on port 8080
+
+------------ docker-compose.yml file create karo and uske andar teeno container ka configuration karo.
+services ke tag ke andar ham bhot sare services likhte hai.
+first service - 
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+mysql - 1st image tag me official image ka name likhna hai jha se ham image download karege.
+2nd container tag me container ka name mention karege. 3rd environment tag me pasowrd and DB ka name mention karo. 
+4th volumes tag me 
+volumes:
+  - <host_path>:<container_path> ( host_path == File on your local machine (host) | container_path == Location inside the container) : symbol maps host file to container file.
+5th healthcheck tag me 
+mysqladmin ping command se mysql ka connection check karege in every 10 seconds, if the connection is not ready it retries 5 times.  
+
+
+second service - 
+  three-tier-application:
+    build: ./three-tier-application
+    container_name: three-tier-application
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    restart: always
+
+dockerfile will build image using dockerfile inside folder in project 
+depends_on tag ka matlab yh service jab tak start nhi hogi jab tak ki mysql service healthy start na hojae.
+ports tag me hostPort:containerPort (hostPort==Port on your system (host machine) & containerPort == Port inside the Docker container
+environment tag me we canb connect with each sevice using service name so in environment variables me mysql se connect honeke liye ham localhost ke badle service ka name likhege.
+restart: always ( restart tag me always likhege and ham bataege,(If container crashes → restart automatically.) ) 
+
+
+third service - 
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    depends_on:
+      - three-tier-application
+    ports:
+      - "80:80"
+    restart: always
+build nginx image using nginx image ka name from dockerHub, and container name nginx create karo.
+niginx is a web server, reverse proxy, load balancer. Nginx acts like a traffic controller.
+in ports tag host_port:container_port
