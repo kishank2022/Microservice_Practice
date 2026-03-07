@@ -76,4 +76,28 @@ public class DuplicateElementInArray {
 			System.out.println(c1.isPresent() ? "first non repeating element is "+c1.get() : "Element is not present");
 			
 		}
+
+	public static void first_non_repeating_character() {
+		String s1 = "kishan_mahesh_kushwaha";
+		Set<Character> unique = new HashSet<>();
+		Set<Character> duplicate = new HashSet<>();
+		s1.toLowerCase()
+				.chars()
+				.mapToObj(c -> (char) c)
+				.filter(c -> c!=' ')
+				.forEach(c ->{
+					if(!unique.add(c)) {
+						duplicate.add(c);
+					}
+				});
+		System.out.println(unique);
+		System.out.println(duplicate);
+		Optional<Character> first_non_repeating_character = s1.toLowerCase()
+				.chars()
+				.mapToObj(c -> (char) c)
+				.filter(c -> c!=' ')
+				.filter(c -> !duplicate.contains(c))
+				.findFirst();
+		System.out.println(first_non_repeating_character.isPresent() ? "first_non_repeating_character:"+first_non_repeating_character.get() : "First-non repeating element is not present.");
+	}
 }
